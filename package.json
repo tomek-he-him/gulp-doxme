@@ -1,0 +1,43 @@
+{ "name": "gulp-doxme"
+, "version": "0.0.0"
+, "description": "Create markdown from dox-ish output."
+
+, "main": "/dist.es5/index.js"
+, "files":
+  [ "/dist.es5/"
+  , "/dist.es6/"
+  , "Readme.md"
+  , "License.md"
+  ]
+
+, "scripts":
+  { "test": "6to5 test/*.js"
+  , "prepublish": "gulp build"
+  }
+
+, "devDependencies":
+  { "6to5": "3.6.2"
+
+  , "gulp": "3.8.11"
+  , "gulp-6to5": "3.0.0"
+  , "tape-catch": "1.0.4"
+  }
+
+, "license": "MIT"
+, "keywords":
+  [ "dox"
+  , "gulp"
+  , "readme"
+  , "docs"
+  , "jsdoc"
+  , "doxme"
+  , "documentation"
+  , "markdown"
+  , "gulpplugin"
+  ]
+, "author": "Tomek Wiszniewski <t.wiszniewski@gmail.com>"
+, "repository":
+  { "type": "git"
+  , "url": "git@github.com:tomekwi/gulp-doxme.git"
+  }
+}
