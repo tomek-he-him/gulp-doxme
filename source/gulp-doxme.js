@@ -5,7 +5,7 @@ import {obj as through} from "through2";
 var DoxmeError = util.PluginError.bind(null, "gulp-doxme");
 
 
-export default (settings) => {
+export default (options = {}) => {
   return through(function gulpDoxme (file, encoding, done) {
     var data = file.data;
     if (!data) {
@@ -16,7 +16,12 @@ export default (settings) => {
       }
 
     var markdown;
-    try {markdown = doxme(data);}
+    try {markdown = doxme
+      ( data
+      , options.readme
+      , options.package
+      , options.travis
+      );}
     catch (error) {return done(new DoxmeError
       ( "Something went wrong with the doxme call. Here's what doxme says:\n"
       + error.message
