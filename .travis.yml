@@ -10,4 +10,4 @@ deploy:
   on:
     tags: true
     all_branches: true
-    repo: tomekwi/as.js
+    repo: tomekwi/gulp-doxme
