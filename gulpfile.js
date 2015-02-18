@@ -1,4 +1,4 @@
-/*jshint esnext: false, node: true, globalstrict: true */
+/*jshint esnext: false, globalstrict: true */
 "use strict";
 
 var gulp = require("gulp");
