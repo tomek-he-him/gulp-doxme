@@ -3,6 +3,8 @@ import path from "path";
 
 import dox from "dox";
 import originalDoxme from "doxme";
+import gulp from "gulp";
+import gulpDox from "gulp-dox";
 import test from "tape-catch";
 import spigot from "stream-spigot";
 import File from "vinyl";
@@ -10,8 +12,9 @@ import File from "vinyl";
 import doxme from "../source/gulp-doxme";
 
 
+var inputFilePath = path.resolve(__dirname, "fixtures/input.js");
 var doxOutput = dox.parseComments(
-  fs.readFileSync(path.resolve(__dirname, "fixtures/input.js")).toString()
+  fs.readFileSync(inputFilePath).toString()
   );
 var doxOutputFile = new File(
   { cwd: "/"
@@ -58,6 +61,28 @@ test("Works with a JSON file", (is) => {
   is.plan(2);
 
   spigot({objectMode: true}, [doxOutputFile.clone()])
+    .pipe(doxme())
+    .on("data", (outputFile) => {
+      is.equal
+        ( path.extname(outputFile.path)
+        , ".md"
+        , "outputting a markdown file"
+        );
+      is.equal
+        ( outputFile.contents.toString()
+        , originalDoxme(doxOutput)
+        , "with the same content as doxme's output"
+        );
+      })
+    ;
+  });
+
+
+test("Works with gulp-dox", (is) => {
+  is.plan(2);
+
+  gulp.src(inputFilePath)
+    .pipe(gulpDox())
     .pipe(doxme())
     .on("data", (outputFile) => {
       is.equal
