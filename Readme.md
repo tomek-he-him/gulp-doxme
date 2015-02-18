@@ -38,8 +38,8 @@ var dox = require("gulp-dox");
 var doxme = require("gulp-doxme");
 
 gulp.src("*.js")
-  .pipe(dox({readme: true}))
-  .pipe(doxme())
+  .pipe(dox())
+  .pipe(doxme({readme: true}))
   .pipe(gulp.dest("Readme.md"))
   ;
 ```
