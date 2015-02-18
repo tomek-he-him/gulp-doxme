@@ -2,7 +2,7 @@
 "use strict";
 
 var gulp = require("gulp");
-var to5 = require("gulp-6to5");
+var babel = require("gulp-babel");
 
 
 var settings =
@@ -35,7 +35,7 @@ gulp.task("scripts:es6", function () {
 
 gulp.task("scripts:es5", function () {
   return gulp.src(settings.scripts.source)
-    .pipe(to5())
+    .pipe(babel())
     .pipe(gulp.dest(settings.scripts.target.es5))
     ;
 });
