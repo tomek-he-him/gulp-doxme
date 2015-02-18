@@ -76,7 +76,25 @@ test("Works with a JSON file", (is) => {
 
 
 test("Emits errors", (is) => {
-  is.skip("when given broken file.data");
-  is.skip("when given an invalid JSON file");
-  is.end();
+  is.plan(2);
+
+  var brokenDataFile = doxOutputFile.clone();
+  brokenDataFile.data = "that's not dox output";
+
+  spigot({objectMode: true}, [brokenDataFile])
+    .pipe(doxme())
+    .on("error", () => {
+      is.pass("when given broken file.data");
+      })
+    ;
+
+  var brokenJSONFile = doxOutputFile.clone();
+  brokenJSONFile.contents = new Buffer("invalid JSON");
+
+  spigot({objectMode: true}, [brokenJSONFile])
+    .pipe(doxme())
+    .on("error", () => {
+      is.pass("when given an invalid JSON file");
+      })
+    ;
   });
