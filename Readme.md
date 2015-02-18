@@ -12,6 +12,10 @@ gulp-doxme
 
 [dox]: https://github.com/tj/dox
 
+A gulp plugin for [doxme][].
+
+[doxme]: https://github.com/tmcw/doxme
+
 
 
 
@@ -19,7 +23,7 @@ Installation
 ------------
 
 ```sh
-$ npm install gulp-dox
+$ npm install gulp-doxme
 ```
 
 
@@ -34,11 +38,13 @@ var dox = require("gulp-dox");
 var doxme = require("gulp-doxme");
 
 gulp.src("*.js")
-  .pipe(dox())
+  .pipe(dox({readme: true}))
   .pipe(doxme())
   .pipe(gulp.dest("Readme.md"))
   ;
 ```
+
+Read through [doxme][] to see what happens under the hood and learn about the available options.
 
 
 
