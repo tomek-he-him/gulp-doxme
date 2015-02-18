@@ -17,12 +17,13 @@
   }
 
 , "scripts":
-  { "test": "6to5 test/*.js"
+  { "test": "6to5-node test/*.js | tap-spec"
   , "prepublish": "gulp build"
   }
 
 , "devDependencies":
   { "6to5": "3.6.2"
+  , "tap-spec": "2.2.1"
 
   , "gulp": "3.8.11"
   , "gulp-6to5": "3.0.0"
