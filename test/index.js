@@ -21,7 +21,7 @@ var doxOutputFile = new File(
   });
 
 
-test("Processes file.data", (is) => {
+test("Works with file.data", (is) => {
   is.plan(3);
 
   var inputJSON = "[]";
@@ -49,14 +49,31 @@ test("Processes file.data", (is) => {
         , originalDoxme(doxOutput)
         , "with the same content as doxme's output"
         );
-      });
+      })
+    ;
   });
 
-test("Processes JSON output of gulp-dox", (is) => {
-  is.skip("outputting a markdown file");
-  is.skip("with the same content as doxme's output");
-  is.end();
+
+test("Works with a JSON file", (is) => {
+  is.plan(2);
+
+  spigot({objectMode: true}, [doxOutputFile.clone()])
+    .pipe(doxme())
+    .on("data", (outputFile) => {
+      is.equal
+        ( path.extname(outputFile.path)
+        , ".md"
+        , "outputting a markdown file"
+        );
+      is.equal
+        ( outputFile.contents.toString()
+        , originalDoxme(doxOutput)
+        , "with the same content as doxme's output"
+        );
+      })
+    ;
   });
+
 
 test("Emits errors", (is) => {
   is.skip("when given broken file.data");
