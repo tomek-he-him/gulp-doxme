@@ -7,12 +7,13 @@ var DoxmeError = util.PluginError.bind(null, "gulp-doxme");
 
 export default (settings) => {
   return through(function gulpDoxme (file, encoding, done) {
-    var data = file.data || (() => {
-      try {return JSON.parse(file.contents.toString());}
-      catch (error) {done(new DoxmeError(
+    var data = file.data;
+    if (!data) {
+      try {data = JSON.parse(file.contents.toString());}
+      catch (error) {return done(new DoxmeError(
         "Input must be a valid JSON file."
         ));}
-      })();
+      }
 
     var markdown;
     try {markdown = doxme(data);}
