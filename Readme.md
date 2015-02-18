@@ -37,7 +37,9 @@ Read through [doxme][] to see what happens under the hood and learn about the av
 
 ### With gulp-dox
 
-Takes a JSON file as input (such as that coming from [gulp-dox][]). This approach is quick and simple.
+This approach is quick and simple.
+
+Takes a JSON file as input (such as that coming from [gulp-dox][]).
 
 [gulp-dox]: https://github.com/ayhankuru/gulp-dox
 
@@ -56,7 +58,9 @@ gulp.src("*.js")
 
 ### With gulp-data
 
-Takes `file.data` as input (for example coming from [gulp-data]). This approach gives you more power, when you want to process the dox output before passing it to gulp-doxme.
+This approach gives you more power. Among other things it allows you to process output from dox before passing it to gulp-doxme.
+
+Takes `file.data` as input (for example coming from [gulp-data]):
 
 [gulp-data]: https://github.com/colynb/gulp-data
 
