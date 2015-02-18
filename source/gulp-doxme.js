@@ -1,9 +1,8 @@
-import set from "101/set";
 import doxme from "doxme";
-import gutil from "gulp-util";
+import util from "gulp-util";
 import {obj as through} from "through2";
 
-var DoxmeError = gutil.PluginError.bind(null, "gulp-doxme");
+var DoxmeError = util.PluginError.bind(null, "gulp-doxme");
 
 
 export default (settings) => {
@@ -22,8 +21,9 @@ export default (settings) => {
       + error.message
       ));}
 
-    done(null
-      , set(file, "contents", new Buffer(markdown))
-      );
+    var output = file.clone();
+    output.path = util.replaceExtension(file.path, ".md");
+    output.contents = new Buffer(markdown);
+    done(null, output);
     });
   };
