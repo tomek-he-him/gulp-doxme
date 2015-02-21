@@ -5,14 +5,11 @@ var gulp = require("gulp");
 var babel = require("gulp-babel");
 
 
-var settings =
-  { scripts:
-    { source: "source/**/*.js"
-    , target:
-      { es5: "dist.es5"
-      , es6: "dist.es6"
-      }
-    }
+// Common settings
+// ---------------
+
+var common =
+  { scriptsSource: "source/**/*.js"
   };
 
 
@@ -28,14 +25,14 @@ gulp.task("build", ["scripts"]);
 gulp.task("scripts", ["scripts:es6", "scripts:es5"]);
 
 gulp.task("scripts:es6", function () {
-  return gulp.src(settings.scripts.source)
-    .pipe(gulp.dest(settings.scripts.target.es6))
+  return gulp.src(common.scriptsSource)
+    .pipe(gulp.dest("dist.es6"))
     ;
 });
 
 gulp.task("scripts:es5", function () {
-  return gulp.src(settings.scripts.source)
+  return gulp.src(common.scriptsSource)
     .pipe(babel())
-    .pipe(gulp.dest(settings.scripts.target.es5))
+    .pipe(gulp.dest("."))
     ;
 });
