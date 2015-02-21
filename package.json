@@ -1,5 +1,5 @@
 { "name": "gulp-doxme"
-, "version": "1.5.3"
+, "version": "1.5.4"
 , "description": "Create markdown from dox-ish output."
 
 , "dependencies":
