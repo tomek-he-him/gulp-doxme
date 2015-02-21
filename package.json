@@ -26,9 +26,8 @@
   , "vinyl": "0.4.6"
   }
 
-, "main": "/dist.es5/gulp-doxme.js"
 , "files":
-  [ "/dist.es5/"
+  [ "/index.js"
   , "/dist.es6/"
   , "/Readme.md"
   , "/License.md"
