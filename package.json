@@ -3,8 +3,8 @@
 , "description": "Create markdown from dox-ish output."
 
 , "dependencies":
-  { "doxme": "1.5.0"
-  , "through2": "0.6.3"
+  { "doxme": "^1.5.0"
+  , "through2": "^0.6.3"
   }
 
 , "scripts":
@@ -17,6 +17,7 @@
   , "tap-spec": "2.2.1"
 
   , "dox": "0.6.1"
+  , "del": "1.1.1"
   , "gulp": "3.8.11"
   , "gulp-dox": "0.1.3"
   , "gulp-util": "3.0.3"
@@ -26,8 +27,9 @@
   , "vinyl": "0.4.6"
   }
 
+, "main": "dist.es5/gulp-doxme.js"
 , "files":
-  [ "/index.js"
+  [ "/dist.es5/"
   , "/dist.es6/"
   , "/Readme.md"
   , "/License.md"
