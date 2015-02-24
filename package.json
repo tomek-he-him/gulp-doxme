@@ -3,7 +3,7 @@
 , "description": "Create markdown from dox-ish output."
 
 , "dependencies":
-  { "doxme": "^1.6.0"
+  { "doxme": "^1.7.1"
   , "gulp-util": "^3.0.3"
   , "through2": "^0.6.3"
   }
