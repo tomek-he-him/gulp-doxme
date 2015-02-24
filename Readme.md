@@ -47,11 +47,13 @@ Takes a JSON file as input (such as that coming from [gulp-dox][]).
 var gulp = require("gulp");
 var dox = require("gulp-dox");
 var doxme = require("gulp-doxme");
+var concat = require("gulp-concat");
 
 gulp.src("*.js")
   .pipe(dox())
   .pipe(doxme())
-  .pipe(gulp.dest("Readme.md"))
+  .pipe(concat("Readme.md"))
+  .pipe(gulp.dest("."))
   ;
 ```
 
@@ -69,13 +71,15 @@ var gulp = require("gulp");
 var dox = require("dox");
 var data = require("gulp-data");
 var doxme = require("gulp-doxme");
+var concat = require("gulp-concat");
 
 gulp.src("*.js")
   .pipe(data(function (file) {
     return dox.parseComments(file.contents.toString());
     }))
   .pipe(doxme())
-  .pipe(gulp.dest("Readme.md"))
+  .pipe(concat("Readme.md"))
+  .pipe(gulp.dest("."))
   ;
 ```
 
